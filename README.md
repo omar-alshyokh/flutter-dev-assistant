@@ -15,23 +15,24 @@ For non-Flutter questions, it responds with a friendly scope reminder.
 
 ## Demo Video
 
-
-![WidgetWise-Demo](https://github.com/user-attachments/assets/811d4201-21a0-4f56-b04f-f0f50a3198c0)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/811d4201-21a0-4f56-b04f-f0f50a3198c0" alt="WidgetWise Demo" width="320" height="640" />
+</p>
 
 ## Screenshots
 
-![Splash](docs/screenshots/splash.png)
-![Chat Screen](docs/screenshots/chat.png)
-![Suggestions](docs/screenshots/suggestions.png)
-
-If you add more images, place them in `docs/screenshots/` and reference them the same way.
-
-Suggested captures:
-- Splash screen
-- Chat screen (empty state)
-- Chat screen (with conversation)
-- Suggestions section
-- AI fallback response example
+<table align="center">
+  <tr>
+    <td align="center"><strong>Splash</strong></td>
+    <td align="center"><strong>Chat</strong></td>
+    <td align="center"><strong>Suggestions</strong></td>
+  </tr>
+  <tr>
+    <td><img src="docs/screenshots/splash.png" alt="Splash" width="240" height="520" /></td>
+    <td><img src="docs/screenshots/chat.png" alt="Chat Screen" width="240" height="520" /></td>
+    <td><img src="docs/screenshots/suggestions.png" alt="Suggestions" width="240" height="520" /></td>
+  </tr>
+</table>
 
 ## Tech Stack
 
@@ -93,7 +94,7 @@ flutter test
 
 ## Current Chat Logic
 
-1. Try exact/keyword match in local Flutter FAQ list.
+1. Try exact/keyword match in the local Flutter FAQ list.
 2. If no FAQ match:
    - If question looks Flutter-related -> ask AI.
    - Else -> return a friendly "Flutter-only scope" response.
