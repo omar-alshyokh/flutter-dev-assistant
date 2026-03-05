@@ -20,13 +20,11 @@ For non-Flutter questions, it responds with a friendly scope reminder.
 
 ## Screenshots
 
-Place screenshots in a folder like `docs/screenshots/`, then reference them:
-
-```md
 ![Splash](docs/screenshots/splash.png)
 ![Chat Screen](docs/screenshots/chat.png)
 ![Suggestions](docs/screenshots/suggestions.png)
-```
+
+If you add more images, place them in `docs/screenshots/` and reference them the same way.
 
 Suggested captures:
 - Splash screen
@@ -105,4 +103,3 @@ flutter test
 - Never commit `.env`.
 - Rotate API keys if they were exposed.
 - Keep model/API settings configurable via env variables.
-# flutter-dev-assistant
