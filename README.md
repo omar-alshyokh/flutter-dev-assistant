@@ -15,13 +15,8 @@ For non-Flutter questions, it responds with a friendly scope reminder.
 
 ## Demo Video
 
-Add your demo video here (YouTube/Loom/GitHub asset link):
 
-`<PASTE_VIDEO_URL_HERE>`
-
-Example:
-
-`https://youtu.be/your-demo-id`
+![WidgetWise-Demo](https://github.com/user-attachments/assets/811d4201-21a0-4f56-b04f-f0f50a3198c0)
 
 ## Screenshots
 
