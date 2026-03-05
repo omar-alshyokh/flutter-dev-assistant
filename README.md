@@ -16,7 +16,11 @@ For non-Flutter questions, it responds with a friendly scope reminder.
 ## Demo Video
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/811d4201-21a0-4f56-b04f-f0f50a3198c0" alt="WidgetWise Demo" width="320" height="640" />
+  <video src="docs/demo/demo.mp4" width="320" height="640" controls muted loop></video>
+</p>
+
+<p align="center">
+  <a href="docs/demo/demo.mp4">Download demo video</a>
 </p>
 
 ## Screenshots
