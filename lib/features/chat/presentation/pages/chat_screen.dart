@@ -40,6 +40,7 @@ class _ChatScreenState extends State<ChatScreen> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final keyboardOpen = MediaQuery.viewInsetsOf(context).bottom > 0;
 
     return Scaffold(
       appBar: const ChatAppBar(),
@@ -224,27 +225,60 @@ class _ChatScreenState extends State<ChatScreen> {
                       },
                     ),
                   ),
-                  BlocBuilder<ChatCubit, ChatState>(
-                    buildWhen: (p, n) =>
-                        p.isTyping != n.isTyping ||
-                        p.suggestedQuestions != n.suggestedQuestions,
-                    builder: (context, state) {
-                      return Column(
-                        children: [
-                          SuggestedQuestions(
-                            questions: state.suggestedQuestions,
-                            onTap: (q) => context.read<ChatCubit>().send(q),
-                          ),
-                          ChatComposer(
-                            isTyping: state.isTyping,
+                  Column(
+                    children: [
+                      BlocSelector<ChatCubit, ChatState, List<String>>(
+                        selector: (state) => state.suggestedQuestions,
+                        builder: (context, suggestedQuestions) {
+                          return AnimatedSwitcher(
+                            duration: const Duration(milliseconds: 260),
+                            reverseDuration: const Duration(milliseconds: 200),
+                            switchInCurve: Curves.easeOutCubic,
+                            switchOutCurve: Curves.easeInCubic,
+                            transitionBuilder: (child, animation) {
+                              final slide = Tween<Offset>(
+                                begin: const Offset(0, 0.12),
+                                end: Offset.zero,
+                              ).animate(animation);
+
+                              return FadeTransition(
+                                opacity: animation,
+                                child: SizeTransition(
+                                  sizeFactor: animation,
+                                  axisAlignment: -1,
+                                  child: SlideTransition(
+                                    position: slide,
+                                    child: child,
+                                  ),
+                                ),
+                              );
+                            },
+                            child: keyboardOpen
+                                ? const SizedBox.shrink(
+                                    key: ValueKey('suggestions-hidden'),
+                                  )
+                                : SuggestedQuestions(
+                                    key: const ValueKey('suggestions-visible'),
+                                    questions: suggestedQuestions,
+                                    onTap: (q) =>
+                                        context.read<ChatCubit>().send(q),
+                                  ),
+                          );
+                        },
+                      ),
+                      BlocSelector<ChatCubit, ChatState, bool>(
+                        selector: (state) => state.isTyping,
+                        builder: (context, isTyping) {
+                          return ChatComposer(
+                            isTyping: isTyping,
                             onSend: (text) =>
                                 context.read<ChatCubit>().send(text),
                             onStop: () =>
                                 context.read<ChatCubit>().cancelGeneration(),
-                          ),
-                        ],
-                      );
-                    },
+                          );
+                        },
+                      ),
+                    ],
                   ),
                 ],
               ),
